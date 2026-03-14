@@ -6,7 +6,7 @@
   color: #b8c1ec;
 }
 
-#dark-header {
+.dark-header {
   position: sticky;
   top: 0;
   z-index: 10;
@@ -49,6 +49,20 @@
 .header-right {
   flex: 1;
 }
+
+#create-league-header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#create-league-header h1 {
+  margin: 0;
+  text-align: center;
+  
+}
+
 
 .landing-content {
   display: flex;
@@ -101,17 +115,23 @@
   align-items: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 #create-league {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
+  min-height: 100vh;
   background-color: #181a1b;
   color: #b8c1ec;
+}
+
+.create-league-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  flex: 1;
 }
 
 #bracket-container {
@@ -139,7 +159,8 @@
   background-color: #222738;
   color: #b8c1ec;
   min-width: 100%;
-  padding: 0 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 #user-header {
@@ -183,7 +204,7 @@
 }
 
 #create-league-name {
-  width: 40%;
+  width: 60%;
 }
 
 #league-search-input {

@@ -158,7 +158,8 @@ function BracketPage() {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    paddingTop: '20px',
+                    paddingTop: '10px',
+                    paddingBottom: '10px',
                     gap: '1rem'
                 }}
             >
@@ -215,7 +216,7 @@ function BracketPage() {
                     </div>
                 </div>
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <h1 className={leagueName.length > 10 ? 'mobile-too-long' : ''}>{leagueName.toUpperCase()}</h1>
+                    <h1 style={{marginBottom: '0px'}}className={leagueName.length > 10 ? 'mobile-too-long' : ''}>{leagueName.toUpperCase()}</h1>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
                     <img
