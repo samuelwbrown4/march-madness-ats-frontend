@@ -35,7 +35,7 @@ function LandingPage() {
     }
 
     return (
-        <div>
+        <div style={{ backgroundColor: 'red', minHeight: '100vh' }}>
             <div id="landing-page">
                 <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
                     <Modal.Header closeButton className="custom-modal-body">
