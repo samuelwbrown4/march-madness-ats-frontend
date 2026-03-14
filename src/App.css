@@ -10,8 +10,8 @@ html {
   padding: 0;
   width: 100%;
   min-height: 100%;
-  background-color: #1A1A1A;
-  color: white;
+  background-color: #181a1b;
+  color: #b8c1ec;
 
 }
 
@@ -20,7 +20,7 @@ html {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #1A1A1A;
+  background-color: #181a1b;
 }
 
 .logo {
