@@ -35,65 +35,66 @@ function LandingPage() {
     }
 
     return (
-            <div id="landing-page">
-                <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
-                    <Modal.Header closeButton className="custom-modal-body">
-                        <Modal.Title>About</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="custom-modal-body">
+        <div style={{backgroundColor: '#181a1b'}}>
+            <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
+                <Modal.Header closeButton className="custom-modal-body">
+                    <Modal.Title>About</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="custom-modal-body">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <img src='/images/backdoor-brackets-logo-cropped.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px', textAlign: 'center' }} />
+                        </div>
+                        <div>
+                            <h4>What Is This?</h4>
+                            <p>Backdoor Brackets is a tournament style game centered around the NCAA March Madness Tournament, except this time, we've leveled the playing field (court).</p>
+                            <p>Now, teams only need to cover the spread. That's right, in order for you to advance in the bracket you don't need to beat that unstoppable 1 seed, just Vegas.</p>
+                            <p>Spreads will be set the morning of gameday for each game. All you have to do is sit back, relax, and root for madness!</p>
+                        </div>
+                        <div>
+                            <h4>How To Play</h4>
+                            <ul>
+                                <li>Every person is randomly assigned a team and you want that team to win against the spread.</li>
+                                <li>If your team wins the game and covers the spread then you move on with that same team.</li>
+                                <li>If your team loses the game, but covers the spread you move on with the winning team.</li>
+                                <li>If your team does not cover the spread (whether they win the game or not) then you do not move on.</li>
+                            </ul>
+                        </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <img src='/images/backdoor-brackets-logo-cropped.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px', textAlign: 'center' }} />
-                            </div>
-                            <div>
-                                <h4>What Is This?</h4>
-                                <p>Backdoor Brackets is a tournament style game centered around the NCAA March Madness Tournament, except this time, we've leveled the playing field (court).</p>
-                                <p>Now, teams only need to cover the spread. That's right, in order for you to advance in the bracket you don't need to beat that unstoppable 1 seed, just Vegas.</p>
-                                <p>Spreads will be set the morning of gameday for each game. All you have to do is sit back, relax, and root for madness!</p>
-                            </div>
-                            <div>
-                                <h4>How To Play</h4>
-                                <ul>
-                                    <li>Every person is randomly assigned a team and you want that team to win against the spread.</li>
-                                    <li>If your team wins the game and covers the spread then you move on with that same team.</li>
-                                    <li>If your team loses the game, but covers the spread you move on with the winning team.</li>
-                                    <li>If your team does not cover the spread (whether they win the game or not) then you do not move on.</li>
-                                </ul>
-                            </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                                <h6>Examples</h6>
-                                <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-                                    <img src='/images/won-and-covered-ex.png' alt='won-and-covered-ex' style={{ maxHeight: '150px' }} />
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                        <p>UCLA Wins and Covers</p>
-                                        <ul>
-                                            <li>Alex advances with UCLA</li>
-                                            <li>Michael is eliminated</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
-                                    <img src='/images/lost-but-covered-ex.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px' }} />
-                                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                                        <p>Alabama St. Loses But Covers</p>
-                                        <ul>
-                                            <li>Ethan advances with Auburn</li>
-                                            <li>Conner is eliminated</li>
-                                        </ul>
-                                    </div>
+                            <h6>Examples</h6>
+                            <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
+                                <img src='/images/won-and-covered-ex.png' alt='won-and-covered-ex' style={{ maxHeight: '150px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <p>UCLA Wins and Covers</p>
+                                    <ul>
+                                        <li>Alex advances with UCLA</li>
+                                        <li>Michael is eliminated</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <img src='/images/backdoor-brackets-logo-cropped.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px', textAlign: 'center' }} />
+                            <div style={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
+                                <img src='/images/lost-but-covered-ex.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                    <p>Alabama St. Loses But Covers</p>
+                                    <ul>
+                                        <li>Ethan advances with Auburn</li>
+                                        <li>Conner is eliminated</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </Modal.Body>
-                    <Modal.Footer className="custom-modal-body">
-                        <Button className='btn btn-primary' onClick={() => setShowModal(false)}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <img src='/images/backdoor-brackets-logo-cropped.png' alt='lost-but-covered-ex' style={{ maxHeight: '150px', textAlign: 'center' }} />
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer className="custom-modal-body">
+                    <Button className='btn btn-primary' onClick={() => setShowModal(false)}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <div id="landing-page">
                 <div id="welcome-header">
                     <h1>Welcome!</h1>
                     <Link className="header-button" onClick={() => setShowModal(true)}>
@@ -119,6 +120,7 @@ function LandingPage() {
                     <img src='/images/backdoor-brackets-logo.png' style={{ maxHeight: '200px', maxWidth: '75%' }} />
                 </div>
             </div>
+        </div>
     )
 };
 
