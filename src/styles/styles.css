@@ -543,6 +543,22 @@ tr, td, th {
   color: #b8c1ec;
 }
 
+#landing-page {
+  min-height: 100dvh;;
+}
+
+#bracket-container{
+  min-height: 100dvh;
+}
+
+#create-league{
+  min-height: 100dvh;
+}
+
+#user-dashboard-container{
+  min-height: 100dvh;
+}
+
 .game-card{
   box-shadow: 0 4px 16px rgba(100, 108, 255, 0.18);
 }
