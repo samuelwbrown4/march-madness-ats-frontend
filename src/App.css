@@ -2,8 +2,8 @@
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  width: 100vw;
-  min-height: 100dvh;
+  width: 100%;
+  min-height: 100%;
   padding: 0;
   text-align: center;
 }
