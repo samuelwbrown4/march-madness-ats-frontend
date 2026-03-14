@@ -24,14 +24,14 @@ a:hover {
 
 body {
   margin: 0;
+  display: flex;
+  place-items: center;
   min-width: 320px;
   min-height: 100dvh;
   background-color: #181a1b;
-  overscroll-behavior-y: none;
 }
 html {
   background-color: #181a1b;
-  overscroll-behavior-y: none;
 }
 
 h1 {
