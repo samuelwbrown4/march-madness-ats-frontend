@@ -116,7 +116,7 @@ function LandingPage() {
                         <span>Don't have a league? Create one <Link to='/create-league'>here</Link>.</span>
                     </div>
                 </div>
-                <div>
+                <div style={{textAlign: 'center'}}>
                     <img src='/images/backdoor-brackets-logo.png' style={{ maxHeight: '200px', maxWidth: '75%' }} />
                 </div>
             </div>
