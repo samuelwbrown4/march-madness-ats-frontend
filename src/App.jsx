@@ -1,4 +1,3 @@
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -9,6 +8,7 @@ import BracketPage from './pages/BracketPage';
 import AdminLogin from './admin/AdminLogin';
 import AdminDashboard from './admin/AdminDashboard';
 import './styles/styles.css';
+import './App.css'
 
 
 
