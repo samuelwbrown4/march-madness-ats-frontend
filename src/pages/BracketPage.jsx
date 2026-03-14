@@ -158,12 +158,11 @@ function BracketPage() {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
                     paddingTop: '20px',
                     gap: '1rem'
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
                     <img
                         src="/images/backdoor-brackets-logo-cropped.png"
                         alt="Backdoor Brackets Logo"
@@ -215,10 +214,10 @@ function BracketPage() {
                         </div>
                     </div>
                 </div>
-                <div className="mobile-too-long" style={{ textAlign: 'center',}}>
+                <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1 className={leagueName.length > 10 ? 'mobile-too-long' : ''}>{leagueName.toUpperCase()}</h1>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
                     <img
                         src="/images/backdoor-brackets-logo-cropped.png"
                         alt="Backdoor Brackets Logo"

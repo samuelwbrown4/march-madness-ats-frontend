@@ -30,9 +30,18 @@ function LandingPage() {
         }
     }
 
+    const handleShowModal = () => {
+        setShowMenu(false);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
     return (
         <div id="landing-page">
-            <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
+            <Modal show={showModal} onHide={handleCloseModal} size="lg">
                 <Modal.Header closeButton className="custom-modal-body">
                     <Modal.Title>About</Modal.Title>
                 </Modal.Header>
@@ -85,7 +94,7 @@ function LandingPage() {
                     </div>
                 </Modal.Body>
                 <Modal.Footer className="custom-modal-body">
-                    <Button className='btn btn-primary' onClick={() => setShowModal(false)}>
+                    <Button className='btn btn-primary' onClick={handleCloseModal}>
                         Close
                     </Button>
                 </Modal.Footer>
@@ -102,14 +111,14 @@ function LandingPage() {
                         </svg>
                     </button>
                     <div className={`header-buttons-container ${showMenu ? 'show' : ''}`}>
-                        <Link className="header-button" onClick={() => setShowModal(true)}>
+                        <Link className="header-button" onClick={handleShowModal}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="header-svg" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
                             </svg>
                             {showMenu ? 'About' : ''}
                         </Link>
-                        <Link className="header-button" to='/admin-login'>
+                        <Link className="header-button" to='/admin-login' onClick={() => setShowMenu(false)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" className="header-svg" viewBox="0 0 16 16">
                                 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                 <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />

@@ -16,11 +16,19 @@
   display: flex;
   align-items: center;
   padding: 1rem 2rem;
+  flex-shrink: 0;
 }
 
 .header-left {
   display: flex;
   flex: 1;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-buttons-container {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 1rem;
 }
@@ -48,14 +56,15 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  gap: 3rem;
+  gap: 2rem;
   padding: 2rem;
+  overflow-y: auto;
 }
 
 .league-sign-in {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 2rem;
   background-color: #232b38;
   color: #b8c1ec;
@@ -65,11 +74,15 @@
   max-width: 500px;
 }
 
+.league-sign-in h3 {
+  margin: 0;
+}
+
 .league-sign-in-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   width: 100%;
 }
 
@@ -126,6 +139,7 @@
   background-color: #222738;
   color: #b8c1ec;
   min-width: 100%;
+  padding: 0 2rem;
 }
 
 #user-header {
@@ -145,7 +159,8 @@
 .round-header {
   font-size: 1.5rem;
   margin: 1rem;
-  color: rgba(191, 197, 228, 0.343)
+  color: rgba(191, 197, 228, 0.343);
+  text-align: center;
 }
 
 #admin-form {
@@ -459,6 +474,7 @@ th {
   color: #b8c1ec;
   box-shadow: 0 2px 8px rgba(100, 108, 255, 0.08);
   transition: box-shadow 0.2s, transform 0.2s;
+  text-align: center;
 }
 
 .small-name {
@@ -519,38 +535,25 @@ th {
   border-style: none;
 }
 
-.header-left {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  gap: 1rem;
-}
 
-.header-buttons-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-}
-
-.hamburger-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 
 @media (max-width: 900px) {
+  #landing-page {
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
   .hamburger-btn {
     display: block;
     color: #b8c1ec;
-    padding-bottom: 1rem;
+    padding: 0;
   }
 
   .header-buttons-container {
     display: none;
     flex-direction: column;
-    text-align: left;
+    align-items: flex-start;
     position: absolute;
     top: 60px;
     left: 0;
@@ -561,20 +564,53 @@ th {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
+  .header-buttons-container .header-button {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  #bracket-header {
+    padding: 0 1rem;
+  }
+
   .header-buttons-container.show {
     display: flex;
   }
 
   #dark-header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
   }
 
   #welcome-header h1 {
     font-size: 2rem;
   }
 
+  .landing-content {
+    gap: 1rem;
+    padding: 0.75rem;
+    justify-content: space-evenly;
+  }
+
   .league-sign-in {
     max-width: 90%;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .league-sign-in h3 {
+    font-size: 1.25rem;
+  }
+
+  .league-sign-in-form {
+    gap: 0.75rem;
+  }
+
+  .landing-logo img {
+    max-height: 100px;
+  }
+
+  #go-to-bracket-btn {
+    padding: 0.6rem 1rem;
   }
 
   .league-search-form-mobile {
@@ -672,6 +708,23 @@ th {
 
   #welcome-header h1 {
     font-size: 1.5rem;
+  }
+
+  .league-sign-in {
+    padding: 1rem;
+  }
+
+  .league-sign-in h3 {
+    font-size: 1.1rem;
+  }
+
+  .landing-logo img {
+    max-height: 80px;
+  }
+
+  .landing-content {
+    gap: 0.5rem;
+    padding: 0.5rem;
   }
 }
 
