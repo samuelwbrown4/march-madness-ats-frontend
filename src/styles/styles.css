@@ -1,12 +1,85 @@
 #landing-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  /* justify-content: center; */
+  min-height: 100vh;
   background-color: #181a1b;
   color: #b8c1ec;
+}
 
+#dark-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #181a1b;
+  color: #b8c1ec;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1rem;
+}
+
+#welcome-header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcome-header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.header-right {
+  flex: 1;
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.league-sign-in {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #232b38;
+  color: #b8c1ec;
+  border-radius: 8px;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.league-sign-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.landing-logo {
+  text-align: center;
+}
+
+.landing-logo img {
+  max-height: 200px;
+  max-width: 100%;
 }
 
 #welcome-header {
@@ -23,14 +96,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   overflow-y: auto;
   background-color: #181a1b;
   color: #b8c1ec;
 }
 
 #bracket-container {
-
   background-color: #181a1b;
   background-size: cover;
   background-repeat: no-repeat;
@@ -55,17 +126,6 @@
   background-color: #222738;
   color: #b8c1ec;
   min-width: 100%;
-
-}
-
-#dark-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: #181a1b;
-  color: #b8c1ec;
-  min-width: 100%;
-
 }
 
 #user-header {
@@ -75,7 +135,6 @@
   background-color: #222738;
   color: #b8c1ec;
   min-width: 100%;
-
 }
 
 .custom-modal-body {
@@ -96,7 +155,6 @@
   width: 80%;
   margin: 2rem auto;
   padding: 2rem;
-
 }
 
 .function-group {
@@ -109,32 +167,11 @@
   border-radius: 8px;
 }
 
-.league-sign-in {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #232b38;
-  color: #b8c1ec;
-  border-radius: 8px;
-  align-items: center;
-}
-
-.league-sign-in-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
-}
-
 #create-league-name {
   width: 40%;
 }
 
 #league-search-input {
-
   height: 40%;
   margin-left: 0rem;
 }
@@ -159,10 +196,7 @@
 #button-addon2 {
   background-color: #646cff;
   color: #b8c1ec;
-  ;
   border: none;
-
-
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
@@ -176,21 +210,21 @@
 #go-to-bracket-btn {
   background-color: #646cff;
   color: #b8c1ec;
-  ;
   border: none;
-
-
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
-  width: 40%;
-  height: 40%
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 #initialize-group {
   width: 80%;
   height: auto;
-
 }
 
 #update-group {
@@ -204,10 +238,7 @@
   gap: 1rem;
   width: 40%;
   margin: 2rem auto;
-
 }
-
-
 
 .login {
   display: flex;
@@ -234,11 +265,8 @@
 .form-select,
 .input-group-text {
   background-color: #1e222a;
-  /* darker than .function-group */
   color: #b8c1ec;
-  /* soft blue text */
   border: 1px solid #393e5c;
-  /* muted blue-gray border */
   border-radius: 6px;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -247,7 +275,6 @@
 
 .form-control::placeholder {
   color: #b8c1ec;
-  /* muted gray for placeholder text */
   opacity: 1;
   font-style: italic;
 }
@@ -256,11 +283,8 @@
 .form-select:focus,
 .input-group-text:focus {
   border-color: #b8c1ec;
-  /* soft blue on focus */
   background-color: #232b38;
-  /* slightly lighter background on focus */
   box-shadow: 0 0 0 0.2rem #b8c1ec80;
-  /* subtle blue glow on focus */
   color: #b8c1ec;
 }
 
@@ -280,10 +304,7 @@ th {
 
 .btn-primary {
   background-color: #646cff;
-  ;
-  /* darker than .function-group */
   color: #ffffff;
-  /* dark text for contrast */
   border: none;
   border-radius: 6px;
   padding: 0.5rem 1rem;
@@ -294,16 +315,13 @@ th {
 
 .btn-primary:hover {
   background-color: #535bf2;
-  /* lighter on hover */
   color: #b8c1ec;
-  /* white text on hover for contrast */
 }
 
 .admin-svg {
   width: 50px;
   height: 50px;
   color: #b8c1ec;
-  /* soft blue */
   margin-bottom: 2rem;
 }
 
@@ -311,29 +329,24 @@ th {
   width: 20px;
   height: 20px;
   color: #b8c1ec;
-  margin-left: 0.5rem;
-  /* soft blue */
 }
 
 .plus-btn {
   width: 20px;
   height: 20px;
   color: #b8c1ec;
-  /* soft blue */
   margin-left: 0.5rem;
 }
 
 .plus-btn:hover {
   color: #646cff;
   border-style: none;
-  /* lighter on hover */
 }
 
 .header-svg {
   width: 25px;
   height: 25px;
   color: #b8c1ec;
-  /* soft blue */
   margin: 1rem;
 }
 
@@ -342,6 +355,11 @@ th {
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #b8c1ec;
+  text-decoration: none;
 }
 
 .circle-btn {
@@ -365,15 +383,12 @@ th {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .admin-svg-sm {
   width: 20px;
   height: 20px;
   color: #b8c1ec;
-  /* soft blue */
-
 }
 
 #spread-update-input,
@@ -389,8 +404,6 @@ th {
   margin-bottom: .5rem;
   max-width: 60%;
 }
-
-
 
 .input-group {
   flex-basis: 4fr
@@ -413,7 +426,6 @@ th {
 
 .owner {
   font-size: 0.7rem;
-
 }
 
 .covered {
@@ -423,7 +435,6 @@ th {
 
 .did-not-cover {
   color: #e94f4f !important;
-  /* modern red */
   font-weight: 600;
 }
 
@@ -459,7 +470,6 @@ th {
   box-shadow: 0 4px 16px rgba(100, 108, 255, 0.18);
   transform: translateY(-2px) scale(1.03);
 }
-
 
 .placeholder {
   cursor: default;
@@ -509,6 +519,27 @@ th {
   border-style: none;
 }
 
+.header-left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .hamburger-btn {
     display: block;
@@ -522,7 +553,6 @@ th {
     text-align: left;
     position: absolute;
     top: 60px;
-    /* adjust as needed */
     left: 0;
     background: #232b38;
     border-radius: 8px;
@@ -533,6 +563,18 @@ th {
 
   .header-buttons-container.show {
     display: flex;
+  }
+
+  #dark-header {
+    padding: 1rem;
+  }
+
+  #welcome-header h1 {
+    font-size: 2rem;
+  }
+
+  .league-sign-in {
+    max-width: 90%;
   }
 
   .league-search-form-mobile {
@@ -555,16 +597,13 @@ th {
   }
 
   #league-search-input {
-
     height: 100%;
-
   }
 
   .header-button {
     text-decoration: none;
     color: #b8c1ec;
   }
-
 
   .game-card {
     box-shadow: 0 4px 16px rgba(100, 108, 255, 0.18);
@@ -573,13 +612,11 @@ th {
   .one.left {
     padding-left: 4rem;
     padding-right: 2rem;
-    ;
   }
 
   .one.right {
     padding-left: 2rem;
     padding-right: 4rem;
-    ;
   }
 
   .two.left {
@@ -632,26 +669,24 @@ th {
     display: block;
     flex-shrink: 1;
   }
+
+  #welcome-header h1 {
+    font-size: 1.5rem;
+  }
 }
-
-
-
 
 .round-one-side {
   display: flex;
   flex-direction: column;
   gap: 67px;
   margin-left: 0px;
-  ;
 }
-
 
 .round-two-side {
   display: flex;
   flex-direction: column;
   height: 2136px;
   justify-content: space-between;
-
 }
 
 .round-two-region-top {
@@ -671,7 +706,6 @@ th {
   margin-top: 185px;
   margin-bottom: 0px;
 }
-
 
 .round-three-side {
   display: flex;
@@ -703,7 +737,6 @@ th {
   justify-content: space-between;
   margin-top: 640px;
   gap: 1330px;
-
 }
 
 .round-five-side {
@@ -716,7 +749,6 @@ th {
 .round-six {
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   margin-top: 1450px;
 }
