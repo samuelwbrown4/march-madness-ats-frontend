@@ -35,7 +35,6 @@ function LandingPage() {
     }
 
     return (
-        <div style={{ backgroundColor: '#181a1b', minHeight: '100vh' }}>
             <div id="landing-page">
                 <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
                     <Modal.Header closeButton className="custom-modal-body">
@@ -120,7 +119,6 @@ function LandingPage() {
                     <img src='/images/backdoor-brackets-logo.png' style={{ maxHeight: '200px', maxWidth: '75%' }} />
                 </div>
             </div>
-        </div>
     )
 };
 
