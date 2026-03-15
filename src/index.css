@@ -1,5 +1,6 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bs-body-font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -18,6 +19,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -33,7 +35,8 @@ body {
 }
 
 
-html, body {
+html,
+body {
   margin: 0;
 }
 
@@ -53,9 +56,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -66,10 +71,11 @@ button:focus-visible {
     color: #213547;
     background-color: #181a1b;
   }
+
   a:hover {
     color: #747bff;
   }
-  
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,8 +83,9 @@ button:focus-visible {
     color: #213547;
     background-color: #181a1b;
   }
+
   a:hover {
     color: #747bff;
   }
- 
+
 }

@@ -163,7 +163,7 @@ function BracketPage() {
                     gap: '1rem'
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'left', gap: '1rem', paddingLeft: '0.5rem', flex: 1 }}>
                     <img
                         src="/images/backdoor-brackets-logo-cropped.png"
                         alt="Backdoor Brackets Logo"
@@ -216,13 +216,13 @@ function BracketPage() {
                     </div>
                 </div>
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <h1 style={{marginBottom: '0px'}}className={leagueName.length > 10 ? 'mobile-too-long' : ''}>{leagueName.toUpperCase()}</h1>
+                    <h2 style={{marginBottom: '0px'}}className={leagueName.length > 10 ? 'mobile-too-long' : ''}>{leagueName.toUpperCase()}</h2>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'flex-end', paddingTop: '0.5rem' }}>
                     <img
-                        src="/images/backdoor-brackets-logo-cropped.png"
+                        src="/images/backdoor-brackets-abbreviated.png"
                         alt="Backdoor Brackets Logo"
-                        style={{ height: '50px' }}
+                        style={{ height: '40px' }}
                         className="bracket-header-image-mobile"
                     />
                     <div className="league-search-form-desktop">

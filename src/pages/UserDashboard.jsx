@@ -63,7 +63,7 @@ function UserDashboard() {
                 </Link>
                 </div>
                 <div style={{flex: 1}}>
-                <h1 style={{textAlign: 'center'}}>Standings</h1>
+                <h2 style={{textAlign: 'center'}}>Standings</h2>
                 </div>
                 <div style={{flex: 1 , display: 'flex', justifyContent: 'right', paddingRight: '0.5rem'}}>
                     <img
@@ -73,7 +73,7 @@ function UserDashboard() {
                         className="bracket-header-image-desktop"
                     />
                     <img
-                        src="/images/backdoor-brackets-logo-cropped.png"
+                        src="/images/backdoor-brackets-abbreviated.png"
                         alt="Backdoor Brackets Logo"
                         style={{ height: '50px' }}
                         className="bracket-header-image-mobile"

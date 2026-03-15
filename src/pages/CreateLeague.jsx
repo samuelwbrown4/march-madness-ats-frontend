@@ -81,7 +81,7 @@ function CreateLeague() {
                 </div>
 
                 <div id="create-league-header">
-                    <h1>Create League</h1>
+                    <h2>Create League</h2>
                 </div>
 
                 <div className="header-right"></div>
