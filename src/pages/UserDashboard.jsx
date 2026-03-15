@@ -52,7 +52,8 @@ function UserDashboard() {
             <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    paddingTop: '20px',
+                    paddingTop: '10px',
+                    paddingBottom: '10px',
                     justifyContent: 'space-between'
                 }} id="user-header">
                 <div style={{flex: 1, paddingLeft: '.5rem'}}>

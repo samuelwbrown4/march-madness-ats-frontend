@@ -156,7 +156,7 @@ function LandingPage() {
                         </button>
                     </form>
                     <div>
-                        <span>Don't have a league? Create one <Link to='/create-league'>here</Link>.</span>
+                        <span style={{fontSize: '.9rem'}}>Don't have a league? Create one <Link to='/create-league'>here</Link>.</span>
                     </div>
                 </div>
 

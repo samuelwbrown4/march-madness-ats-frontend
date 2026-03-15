@@ -16,7 +16,7 @@ function FinalFourRight(props){
             <div className='game-card'>
                 {props.finalFourRight.teams && props.finalFourRight.teams[0] ? (
                     <>
-                    <span className={props.finalFourRight.teams[0].nameShort.length >= 12 ? 'small-name' : ''}>
+                    <span className={props.finalFourRight.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
                         <span className={props.finalFourRight.teams[0].isFinal ? (props.finalFourRight.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourRight.teams[0]) ? `(${props.finalFourRight.teams[0].seed})` : ''}{' '}{teamDidAdvance(props.finalFourRight.teams[0]) ? props.finalFourRight.teams[0].nameShort : 'TBD'}{' '}{props.finalFourRight.teams[0].dbSpread ? `(${props.finalFourRight.teams[0].dbSpread})` : ''}{' '}</span>
                         </span>
                         <span>
@@ -37,7 +37,7 @@ function FinalFourRight(props){
                 <hr />
                 {props.finalFourRight.teams && props.finalFourRight.teams[1] ? (
                     <>
-                        <span className={props.finalFourRight.teams[1].nameShort.length >= 12 ? 'small-name' : ''}>
+                        <span className={props.finalFourRight.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
                         <span className={props.finalFourRight.teams[1].isFinal ? (props.finalFourRight.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourRight.teams[1]) ? `(${props.finalFourRight.teams[1].seed})` : ''}{' '}{teamDidAdvance(props.finalFourRight.teams[1]) ? props.finalFourRight.teams[1].nameShort : 'TBD'}{' '}{props.finalFourRight.teams[1].dbSpread ? `(${props.finalFourRight.teams[1].dbSpread})` : ''}{' '}</span>
                         </span>
                         <span>

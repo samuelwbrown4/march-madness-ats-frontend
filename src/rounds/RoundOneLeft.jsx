@@ -8,7 +8,7 @@ function RoundOneLeft(props) {
                     <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 12 ? 'small-name' : ''}>
+                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
                                     <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}){' '}{game.teams[0].nameShort}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
                                 </span>
                                 <span>
@@ -35,7 +35,7 @@ function RoundOneLeft(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                <span className={game.teams[1].nameShort.length >= 12 ? 'small-name' : ''}>
+                                <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
                                     <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}){' '}{game.teams[1].nameShort}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
                                 </span>
                                 <span>
@@ -71,7 +71,7 @@ function RoundOneLeft(props) {
                     <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 12 ? 'small-name' : ''}>
+                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
                                     <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}){' '}{game.teams[0].nameShort}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
                                 </span>
                                 <span>
@@ -102,7 +102,7 @@ function RoundOneLeft(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                <span className={game.teams[1].nameShort.length >= 12 ? 'small-name' : ''}>
+                                <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
                                     <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}){' '}{game.teams[1].nameShort}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
                                 </span>
                                 <span>
