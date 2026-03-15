@@ -543,9 +543,12 @@ th {
 
 .table.table-dark.table-striped {
   background-color: #1e222a;
-  border-collapse: collapse;
+  border-collapse: separate;
   color: #b8c1ec;
   max-width: 70%;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 tr,
@@ -554,6 +557,7 @@ th {
   border-collapse: collapse;
   border: 1px solid #393e5c;
   border-style: none;
+  color: #b8c1ec;
 }
 
 

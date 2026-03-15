@@ -53,9 +53,9 @@ function UserDashboard() {
                     display: 'flex',
                     alignItems: 'center',
                     paddingTop: '20px',
-                    gap: '1rem'
+                    justifyContent: 'space-between'
                 }} id="user-header">
-                <div style={{flex: 1}}>
+                <div style={{flex: 1, paddingLeft: '.5rem'}}>
                     <Link className="header-button" to={`/bracket/${leagueId}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="header-svg" viewBox="0 0 16 16">
                         <path d="M10 12.796V3.204L4.519 8zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753" />
@@ -63,17 +63,15 @@ function UserDashboard() {
                 </Link>
                 </div>
                 <div style={{flex: 1}}>
-                <h1>Standings</h1>
+                <h1 style={{textAlign: 'center'}}>Standings</h1>
                 </div>
-                <div style={{ display: 'flex', flex: 1, alignItems: 'center', gap: '1rem', textAlign: "right" }}>
+                <div style={{flex: 1 , display: 'flex', justifyContent: 'right', paddingRight: '0.5rem'}}>
                     <img
                         src="/images/backdoor-brackets-logo-cropped.png"
                         alt="Backdoor Brackets Logo"
                         style={{ height: '50px' }}
                         className="bracket-header-image-desktop"
                     />
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <img
                         src="/images/backdoor-brackets-logo-cropped.png"
                         alt="Backdoor Brackets Logo"
@@ -85,19 +83,19 @@ function UserDashboard() {
             {standings && (<table className="table table-dark table-striped" style={{ minWidth: '40%' }}>
                 <thead>
                     <tr>
-                        <th colSpan={3}>{leagueName}</th>
+                        <th style={{fontSize: '1.5rem' , color: '#b8c1ec'}} colSpan={3}>{leagueName}</th>
                     </tr>
                     <tr>
-                        <th>Player</th>
-                        <th>Teams</th>
+                        <th style={{fontSize: '1.3rem', color: '#b8c1ec'}}>Player</th>
+                        <th style={{fontSize: '1.3rem', color: '#b8c1ec'}}>Teams</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {standings.map((player) => (
+                    {standings.map((player , idx) => (
                         <React.Fragment key={player.name}>
                             <tr>
-                                <td>{player.name}</td>
-                                <td>
+                                <td style={{color: '#b8c1ec' , textAlign: 'left'}}>{idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : ''))}{' '}{player.name}</td>
+                                <td style={{color: '#b8c1ec'}}>
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                         <div style={{ flex: 1 }}>
                                             <span style={{ textAlign: 'right' }}>{player.teamCount}</span>
