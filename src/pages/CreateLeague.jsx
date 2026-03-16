@@ -6,6 +6,7 @@ function CreateLeague() {
     const [numberOfOwners, setNumberOfOwners] = useState(8)
     const [owners, setOwners] = useState(Array(numberOfOwners).fill(''));
     const [leagueName, setLeagueName] = useState('');
+    const [allMetadata, setAllMetadata] = useState([])
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -17,7 +18,16 @@ function CreateLeague() {
         setOwners(Array(Number(numberOfOwners)).fill(''));
     }, [numberOfOwners]);
 
+    useEffect(() => {
+        fetchMetadata()
+    }, [])
+
     async function handleInitializeTournament() {
+        if (leagueName === '') {
+            window.alert('Please enter a league name!')
+            return;
+        }
+
         if (initialYear === '') {
             window.alert('Please select year to initialize');
             return;
@@ -30,6 +40,43 @@ function CreateLeague() {
                 return;
             }
         }
+
+        const availableYear = allMetadata?.find((m) => m.year === Number(initialYear))
+
+        if (availableYear) {
+            let endOfFirstFourString = availableYear.rounds[0].endDate
+            let [year, month, day] = endOfFirstFourString.split('-').map(Number);
+            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999); 
+            let today = new Date()
+
+            console.log('availableYear:', availableYear);
+            console.log('rounds[0]:', availableYear.rounds[0]);
+            console.log('endOfFirstFourString:', endOfFirstFourString);
+            console.log('endOfFirstFour:', endOfFirstFour);
+            console.log('today:', today);
+            console.log('today < endOfFirstFour:', today < endOfFirstFour);
+
+            if (today < endOfFirstFour) {
+                let response = await fetch(`${API_URL}/api/leagues/queue-league`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ leagueName: leagueName, owners: owners, numberOfOwners: numberOfOwners, year: initialYear, runDate: Date.now() })
+                })
+
+                let data = await response.json();
+
+                if (data.error === 'League name already exists!') {
+                    window.alert('League name already exists!')
+                } else {
+                    window.alert('League queued successfully!')
+                    navigate('/')
+                }
+                return;
+            }
+        }
+
         let response = await fetch(`${API_URL}/api/leagues/initialize-tournament`, {
             method: 'POST',
             headers: {
@@ -47,6 +94,19 @@ function CreateLeague() {
             navigate('/')
         }
 
+
+    }
+
+    async function fetchMetadata() {
+        let response = await fetch(`${API_URL}/api/admin/get-metadata`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+        setAllMetadata(result.metadata);
 
     }
 
@@ -99,7 +159,7 @@ function CreateLeague() {
                                 <option value={''}>Select Year</option>
                                 <option value={2024}>2024</option>
                                 <option value={2025}>2025</option>
-                                {/*<option value={2026}>2026</option>*/}
+                                <option value={2026}>2026</option>
                             </select>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
