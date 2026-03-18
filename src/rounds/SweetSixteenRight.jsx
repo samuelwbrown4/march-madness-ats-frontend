@@ -18,15 +18,17 @@ function SweetSixteenRight(props) {
                     <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[0]) ? `(${game.teams[0].seed})` : ''}{' '}{teamDidAdvance(game.teams[0]) ? game.teams[0].nameShort : 'TBD'}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
-                                        <b>{game.teams[0].isFinal && game.teams[0].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
+                                            <b>{game.teams[0].isFinal && game.teams[0].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[0]) ? `(${game.teams[0].seed})` : ''}{' '}{teamDidAdvance(game.teams[0]) ? game.teams[0].nameShort : 'TBD'}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
+                                    </div>
+                                    {teamDidAdvance(game.teams[0]) ? <img className="team-logo" src={game.teams[0].logoURL} /> : ''}
+                                </div>
                                 <span className={[
                                     "owner",
                                     game.teams[0].isFinal
@@ -45,15 +47,17 @@ function SweetSixteenRight(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                 <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[1]) ? `(${game.teams[1].seed})` : ''}{' '}{teamDidAdvance(game.teams[1]) ? game.teams[1].nameShort : 'TBD'}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
-                                        <b>{game.teams[1].isFinal && game.teams[1].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
+                                            <b>{game.teams[1].isFinal && game.teams[1].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[1]) ? `(${game.teams[1].seed})` : ''}{' '}{teamDidAdvance(game.teams[1]) ? game.teams[1].nameShort : 'TBD'}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
+                                    </div>
+                                    {teamDidAdvance(game.teams[1]) ? <img className="team-logo" src={game.teams[1].logoURL} /> : ''}
+                                </div>
                                 <span
                                     className={[
                                         "owner",
@@ -81,15 +85,17 @@ function SweetSixteenRight(props) {
                     <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[0]) ? `(${game.teams[0].seed})` : ''}{' '}{teamDidAdvance(game.teams[0]) ? game.teams[0].nameShort : 'TBD'}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
-                                        <b>{game.teams[0].isFinal && game.teams[0].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
+                                            <b>{game.teams[0].isFinal && game.teams[0].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[0]) ? `(${game.teams[0].seed})` : ''}{' '}{teamDidAdvance(game.teams[0]) ? game.teams[0].nameShort : 'TBD'}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
+                                    </div>
+                                    {teamDidAdvance(game.teams[0]) ? <img className="team-logo" src={game.teams[0].logoURL} /> : ''}
+                                </div>
                                 <span className={[
                                     "owner",
                                     game.teams[0].isFinal
@@ -108,15 +114,17 @@ function SweetSixteenRight(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                 <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[1]) ? `(${game.teams[1].seed})` : ''}{' '}{teamDidAdvance(game.teams[1]) ? game.teams[1].nameShort : 'TBD'}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
-                                        <b>{game.teams[1].isFinal && game.teams[1].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
+                                            <b>{game.teams[1].isFinal && game.teams[1].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(game.teams[1]) ? `(${game.teams[1].seed})` : ''}{' '}{teamDidAdvance(game.teams[1]) ? game.teams[1].nameShort : 'TBD'}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
+                                    </div>
+                                    {teamDidAdvance(game.teams[1]) ? <img className="team-logo" src={game.teams[1].logoURL} /> : ''}
+                                </div>
                                 <span
                                     className={[
                                         "owner",

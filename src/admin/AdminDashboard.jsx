@@ -15,6 +15,9 @@ function AdminDashboard({ token }) {
     const [leagueArray, setLeagueArray] = useState([]);
     const [leagueToDelete, setLeagueToDelete] = useState('');
     const [yearToReset, setYearToReset] = useState('');
+    const [leagueToArchive, setLeagueToArchive] = useState('');
+    const [queuedLeagues, setQueuedLeagues] = useState([]);
+    const [leagueToPush, setLeagueToPush] = useState('');
 
 
     const navigate = useNavigate()
@@ -30,6 +33,7 @@ function AdminDashboard({ token }) {
         fetchRunLog();
         fetchMetadata();
         fetchAllLeagues();
+        fetchQueuedLeagues();
     }, [])
 
     async function fetchRunLog() {
@@ -77,6 +81,25 @@ function AdminDashboard({ token }) {
             alert('error fetching all league array')
         }
 
+    }
+
+    async function fetchQueuedLeagues() {
+        try {
+            let response = await fetch(`${API_URL}/api/leagues/get-queued-leagues`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            let data = await response.json();
+
+            if (data.queuedLeagues) {
+                setQueuedLeagues(data.queuedLeagues)
+            }
+        } catch (error) {
+            console.log(error);
+            alert('error fetching all league array')
+        }
     }
 
     useEffect(() => {
@@ -148,7 +171,25 @@ function AdminDashboard({ token }) {
         if (result.deleted === true) {
             alert('League Deleted')
         }
+    }
 
+    async function handleLeagueArchive() {
+        let response = await fetch(`${API_URL}/api/admin/archive/${leagueToArchive}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        let result = await response.json()
+
+        if (result.success === true) {
+            alert('League Archived Successfully!')
+            fetchAllLeagues()
+        } else {
+            alert('League failed to archive')
+        }
     }
 
     async function handleReset() {
@@ -170,6 +211,62 @@ function AdminDashboard({ token }) {
         }
     }
 
+    async function pushLeague() {
+        console.log(leagueToPush)
+        const league = queuedLeagues.find((league) => league.name === leagueToPush);
+
+        if (!league) {
+            return alert('Please select a league to push');
+        }
+
+        const availableYear = allMetadata?.find((m) => m.year === Number(league.year))
+
+        if (availableYear) {
+            let endOfFirstFourString = availableYear.rounds[0].endDate
+            let [year, month, day] = endOfFirstFourString.split('-').map(Number);
+            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999);
+            let today = new Date()
+
+            if (today < endOfFirstFour) {
+                alert('Too early to push. Operation Canceled')
+                return;
+            }
+
+            try {
+                if (!league) {
+                    return alert('Error! League not pushed!')
+                }
+
+                let response = await fetch(`${API_URL}/api/leagues/initialize-tournament`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ leagueName: league.name, numberOfOwners: league.numberOfOwners, owners: league.players, year: league.year, runDate: Date.now() })
+                })
+                let data = response.json()
+                if (data.error) {
+                    alert(`Error: ${data.error}`)
+                } else if (data.success) {
+                    
+                    await fetch(`${API_URL}/api/leagues/remove-from-queue/${league.name}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    alert('League pushed successfully')
+                    fetchQueuedLeagues()
+                }
+            } catch (error) {
+                console.log(error);
+                alert('server error')
+            }
+        }
+    }
+
     return (
 
         <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#181a1b' }}>
@@ -187,7 +284,7 @@ function AdminDashboard({ token }) {
                 <div style={{ flex: 1 }}></div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', gap: '50px' }} className="container-lg" id="admin-form">
-                <div className="function-group" style={{display: 'flex' , flexDirection: 'column'}}>
+                <div className="function-group" style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ marginBottom: '20px' }}>
                         <label htmlFor="update-year-select">Select Year for Updates: </label>
                         <select
@@ -264,7 +361,16 @@ function AdminDashboard({ token }) {
                                                     <>
                                                         {round.startDate}{" "}
                                                         {startDateSpreadMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={() => {
+
+                                                                    handleSpreadUpdate(round.startDate);
+
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -278,7 +384,17 @@ function AdminDashboard({ token }) {
                                                             </button>
                                                         )}{" "}
                                                         {startDateFinalScoresMatch && startDateOwnersMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={async () => {
+                                                                    console.log(round.startDate)
+
+                                                                    await handleScoreUpdate(round.startDate);
+                                                                    await handleOwnerUpdate(round.startDate);
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -297,7 +413,15 @@ function AdminDashboard({ token }) {
                                                     <>
                                                         {round.gameDate}{" "}
                                                         {gameDateSpreadMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={() => {
+
+                                                                    handleSpreadUpdate(round.gameDate);
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -310,7 +434,16 @@ function AdminDashboard({ token }) {
                                                             </button>
                                                         )}{" "}
                                                         {gameDateFinalScoresMatch && gameDateOwnersMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={async () => {
+
+                                                                    await handleScoreUpdate(round.gameDate);
+                                                                    await handleOwnerUpdate(round.gameDate);
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -331,7 +464,15 @@ function AdminDashboard({ token }) {
                                                     <>
                                                         {round.endDate}{" "}
                                                         {endDateSpreadMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={() => {
+
+                                                                    handleSpreadUpdate(round.endDate);
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -344,7 +485,16 @@ function AdminDashboard({ token }) {
                                                             </button>
                                                         )}{" "}
                                                         {endDateFinalScoresMatch && endDateOwnersMatch ? (
-                                                            <span className="circle-emoji">🟢</span>
+                                                            <button
+                                                                className="circle-btn"
+                                                                onClick={async () => {
+
+                                                                    await handleScoreUpdate(round.endDate);
+                                                                    await handleOwnerUpdate(round.endDate);
+                                                                }}
+                                                            >
+                                                                🟢
+                                                            </button>
                                                         ) : (
                                                             <button
                                                                 className="circle-btn"
@@ -371,7 +521,7 @@ function AdminDashboard({ token }) {
                 </div>
                 <div className="function-group" id="update-metadata">
                     <h6>Retrieve New Metadata</h6>
-                    <div style={{display: 'flex' , flexDirection: 'column' , alignItems: 'center' , gap: '0.5rem'}}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
                         <select className="form-select" style={{ maxWidth: '30%' }} onChange={(e) => setFetchMetadataInput(e.target.value)}>
                             <option value={''}>Year</option>
                             <option value={2024}>2024</option>
@@ -410,7 +560,7 @@ function AdminDashboard({ token }) {
 
 
 
-                <div className="function-group" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', justifyContent: 'center' }}>
+                <div className="function-group" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', justifyContent: 'center', alignItems: 'center' }}>
                     <div>
                         <h5>Active Leagues</h5>
                         <ul>
@@ -422,12 +572,19 @@ function AdminDashboard({ token }) {
                         </ul>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem' }}>
-                        <span>Enter League to delete.</span>
-                        <input style={{ maxWidth: '30%' }} type="text" value={leagueToDelete} onChange={(e) => setLeagueToDelete(e.target.value)} className="form-control"></input>
-                        <button className="btn btn-danger" onClick={handleLeagueDelete}>Delete League</button>
+                        <div style={{display: 'flex' , flexDirection: 'column', alignItems: 'center' , gap: '1rem'}}>
+                            <span>Enter League to delete.</span>
+                            <input style={{ maxWidth: '60%' }} type="text" value={leagueToDelete} onChange={(e) => setLeagueToDelete(e.target.value)} className="form-control"></input>
+                            <button className="btn btn-danger" onClick={handleLeagueDelete}>Delete League</button>
+                        </div>
+                        <div style={{display: 'flex' , flexDirection: 'column', alignItems: 'center' , gap: '1rem'}}>
+                            <span>Enter League to archive.</span>
+                            <input style={{ maxWidth: '60%' }} type="text" value={leagueToArchive} onChange={(e) => setLeagueToArchive(e.target.value)} className="form-control"></input>
+                            <button className="btn btn-secondary" onClick={handleLeagueArchive}>Archive League</button>
+                        </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', justifyContent: 'center' }}>
-                        <select style={{ maxWidth: '30%' }} className="form-select" onChange={(e) => (setYearToReset(e.target.value))}>
+                        <select style={{ maxWidth: '40%' }} className="form-select" onChange={(e) => (setYearToReset(e.target.value))}>
                             <option value={''}>Year</option>
                             <option value={2024}>2024</option>
                             <option value={2025}>2025</option>
@@ -436,6 +593,18 @@ function AdminDashboard({ token }) {
                         <button className="btn btn-danger" onClick={handleReset}>Reset All Tournament Data</button>
                     </div>
 
+                </div>
+                <div className="function-group" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', justifyContent: 'center' }}>
+                        <h5>Queued Leagues</h5>
+                        <select className="form-select" onChange={(e) => setLeagueToPush(e.target.value)}>
+                            <option>Select League to Push</option>
+                            {queuedLeagues.map((league) => {
+                                return (
+                                    <option key={league.name} value={league.name}>{league.name}</option>
+                                )
+                            })}
+                        </select>
+                        <button onClick={pushLeague} className="btn btn-secondary">Push League</button>
                 </div>
             </div>
         </div>

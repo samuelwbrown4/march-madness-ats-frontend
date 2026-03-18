@@ -8,15 +8,17 @@ function RoundOneRight(props) {
                     <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}){' '}{game.teams[0].nameShort}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
-                                        <b>{game.teams[0].isFinal && game.teams[0].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
+                                            <b>{game.teams[0].isFinal && game.teams[0].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}) {game.teams[0].nameShort} {game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}</span>
+                                    </div>
+                                    <img className="team-logo-right" src={game.teams[0].logoURL} />
+                                </div>
                                 <span className={[
                                     "owner",
                                     game.teams[0].isFinal
@@ -35,15 +37,17 @@ function RoundOneRight(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}){' '}{game.teams[1].nameShort}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
-                                        <b>{game.teams[1].isFinal && game.teams[1].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
+                                            <b>{game.teams[1].isFinal && game.teams[1].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}) {game.teams[1].nameShort} {game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}</span>
+                                    </div>
+                                    <img className="team-logo-right" src={game.teams[1].logoURL} />
+                                </div>
                                 <span
                                     className={[
                                         "owner",
@@ -68,18 +72,20 @@ function RoundOneRight(props) {
             </div>
             <div className='round-one-region'>
                 {props.round1Section5Games.map((game) => (
-                   <div className='game-card' key={game.contestId}>
+                    <div className='game-card' key={game.contestId}>
                         {game.teams && game.teams[0] ? (
                             <>
-                                <span className={game.teams[0].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}){' '}{game.teams[0].nameShort}{' '}{game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
-                                        <b>{game.teams[0].isFinal && game.teams[0].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[0].score !== null && game.teams[0].score !== undefined && game.teams[0].score !== '' ? (
+                                            <b>{game.teams[0].isFinal && game.teams[0].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[0].isFinal ? (game.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[0].seed}) {game.teams[0].nameShort} {game.teams[0].dbSpread ? `(${game.teams[0].dbSpread})` : ''}</span>
+                                    </div>
+                                    <img className="team-logo-right" src={game.teams[0].logoURL} />
+                                </div>
                                 <span className={[
                                     "owner",
                                     game.teams[0].isFinal
@@ -98,15 +104,17 @@ function RoundOneRight(props) {
                         <hr />
                         {game.teams && game.teams[1] ? (
                             <>
-                                <span className={game.teams[1].nameShort.length >= 10 ? 'small-name' : ''}>
-                                    <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}){' '}{game.teams[1].nameShort}{' '}{game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}{' '}</span>
-                                </span>
-                                <span>
-                                    {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
-                                        <b>{game.teams[1].isFinal && game.teams[1].score}</b>
-                                    ) : null}
-                                </span>
-                                <br />
+                                <div className='team-info'>
+                                    <div className='score-section'>
+                                        {game.teams[1].score !== null && game.teams[1].score !== undefined && game.teams[1].score !== '' ? (
+                                            <b>{game.teams[1].isFinal && game.teams[1].score}</b>
+                                        ) : null}
+                                    </div>
+                                    <div className={game.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                                        <span className={game.teams[1].isFinal ? (game.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>({game.teams[1].seed}) {game.teams[1].nameShort} {game.teams[1].dbSpread ? `(${game.teams[1].dbSpread})` : ''}</span>
+                                    </div>
+                                    <img className="team-logo-right" src={game.teams[1].logoURL} />
+                                </div>
                                 <span
                                     className={[
                                         "owner",

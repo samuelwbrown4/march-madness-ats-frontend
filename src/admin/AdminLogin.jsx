@@ -53,7 +53,7 @@ function AdminLogin(props) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#181a1b', minHeight: '100vh' }}>
-            <h2 style={{ color: '#b8c1ec', backgroundColor: '#222738', padding: '20px' }}>Admin Login</h2>
+            <h2 style={{ color: '#b8c1ec', backgroundColor: '#222738', padding: '20px', textAlign: 'center' }}>Admin Login</h2>
             <div className="function-group login">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
