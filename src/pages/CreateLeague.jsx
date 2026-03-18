@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from 'react-router-dom'
+import { Toast, ToastContainer } from 'react-bootstrap'
 
 function CreateLeague() {
     const [initialYear, setInitialYear] = useState('')
     const [numberOfOwners, setNumberOfOwners] = useState(8)
     const [owners, setOwners] = useState(Array(numberOfOwners).fill(''));
     const [leagueName, setLeagueName] = useState('');
-    const [allMetadata, setAllMetadata] = useState([])
+    const [allMetadata, setAllMetadata] = useState([]);
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -48,39 +49,41 @@ function CreateLeague() {
             return;
         }
 
-        
-            let endOfFirstFourString = availableYear.rounds[0].endDate
-            let [year, month, day] = endOfFirstFourString.split('-').map(Number);
-            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999);
-            let today = new Date()
 
-            console.log('availableYear:', availableYear);
-            console.log('rounds[0]:', availableYear.rounds[0]);
-            console.log('endOfFirstFourString:', endOfFirstFourString);
-            console.log('endOfFirstFour:', endOfFirstFour);
-            console.log('today:', today);
-            console.log('today < endOfFirstFour:', today < endOfFirstFour);
+        let endOfFirstFourString = availableYear.rounds[0].endDate
+        let [year, month, day] = endOfFirstFourString.split('-').map(Number);
+        let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999);
+        let today = new Date()
 
-            if (today < endOfFirstFour) {
-                let response = await fetch(`${API_URL}/api/leagues/queue-league`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ leagueName: leagueName, owners: owners, numberOfOwners: numberOfOwners, year: initialYear, runDate: Date.now() })
-                })
+        console.log('availableYear:', availableYear);
+        console.log('rounds[0]:', availableYear.rounds[0]);
+        console.log('endOfFirstFourString:', endOfFirstFourString);
+        console.log('endOfFirstFour:', endOfFirstFour);
+        console.log('today:', today);
+        console.log('today < endOfFirstFour:', today < endOfFirstFour);
 
-                let data = await response.json();
+        if (today < endOfFirstFour) {
+            let response = await fetch(`${API_URL}/api/leagues/queue-league`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ leagueName: leagueName, owners: owners, numberOfOwners: numberOfOwners, year: initialYear, runDate: Date.now() })
+            })
 
-                if (data.error === 'League name already exists!') {
-                    window.alert('League name already exists!')
-                } else {
-                    window.alert('League queued successfully!')
-                    navigate('/')
-                }
-                return;
+            let data = await response.json();
+
+            if (data.error === 'League name already exists!') {
+                window.alert('League name already exists!')
+            } else {
+                console.log('About to show toast');
+                alert('League queued successfully!')
+                navigate('/')
+
             }
-    
+            return;
+        }
+
 
         let response = await fetch(`${API_URL}/api/leagues/initialize-tournament`, {
             method: 'POST',
@@ -162,12 +165,12 @@ function CreateLeague() {
                             <h6 style={{ textAlign: 'center' }}> Select Year To Initialize Tournament For </h6>
                             <select className="form-select" id="year-select" onChange={(e) => setInitialYear(e.target.value)}>
                                 <option value={''}>Select Year</option>
-                                {allMetadata.map((m)=>{
-                                    return(
+                                {allMetadata.map((m) => {
+                                    return (
                                         <option key={m.year} value={m.year}>{m.year}</option>
                                     )
                                 })}
-                               
+
                             </select>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

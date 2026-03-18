@@ -18,7 +18,7 @@ function FinalFourLeft(props) {
                     <>
                         <div className='team-info'>
                             {teamDidAdvance(props.finalFourLeft.teams[0]) ? <img className="team-logo" src={props.finalFourLeft.teams[0].logoURL} /> : ''}
-                            <div className={props.finalFourLeft.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalFourLeft.teams[0]) && props.finalFourLeft.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalFourLeft.teams[0].isFinal ? (props.finalFourLeft.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourLeft.teams[0]) ? `(${props.finalFourLeft.teams[0].seed})` : ''}{' '}{teamDidAdvance(props.finalFourLeft.teams[0]) ? props.finalFourLeft.teams[0].nameShort : 'TBD'}{' '}{props.finalFourLeft.teams[0].dbSpread ? `(${props.finalFourLeft.teams[0].dbSpread})` : ''}{' '}</span>
                             </div>
                             <div className='score-section'>
@@ -41,7 +41,7 @@ function FinalFourLeft(props) {
                     <>
                         <div className='team-info'>
                             {teamDidAdvance(props.finalFourLeft.teams[1]) ? <img className="team-logo" src={props.finalFourLeft.teams[1].logoURL} /> : ''}
-                            <div className={props.finalFourLeft.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalFourLeft.teams[1]) && props.finalFourLeft.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalFourLeft.teams[1].isFinal ? (props.finalFourLeft.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourLeft.teams[1]) ? `(${props.finalFourLeft.teams[1].seed})` : ''}{' '}{teamDidAdvance(props.finalFourLeft.teams[1]) ? props.finalFourLeft.teams[1].nameShort : 'TBD'}{' '}{props.finalFourLeft.teams[1].dbSpread ? `(${props.finalFourLeft.teams[1].dbSpread})` : ''}{' '}</span>
                             </div>
                             <div className='score-section'>

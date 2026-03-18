@@ -22,7 +22,7 @@ function FinalFourRight(props) {
                                     <b>{props.finalFourRight.teams[0].isFinal && props.finalFourRight.teams[0].score}</b>
                                 ) : null}
                             </div>
-                            <div className={props.finalFourRight.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalFourRight.teams[0]) && props.finalFourRight.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalFourRight.teams[0].isFinal ? (props.finalFourRight.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourRight.teams[0]) ? `(${props.finalFourRight.teams[0].seed})` : ''}{' '}{teamDidAdvance(props.finalFourRight.teams[0]) ? props.finalFourRight.teams[0].nameShort : 'TBD'}{' '}{props.finalFourRight.teams[0].dbSpread ? `(${props.finalFourRight.teams[0].dbSpread})` : ''}{' '}</span>
                             </div>
                             {teamDidAdvance(props.finalFourRight.teams[0]) ? <img className="team-logo" src={props.finalFourRight.teams[0].logoURL} /> : ''}
@@ -45,7 +45,7 @@ function FinalFourRight(props) {
                                     <b>{props.finalFourRight.teams[1].isFinal && props.finalFourRight.teams[1].score}</b>
                                 ) : null}
                             </div>
-                            <div className={props.finalFourRight.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalFourRight.teams[1]) && props.finalFourRight.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalFourRight.teams[1].isFinal ? (props.finalFourRight.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalFourRight.teams[1]) ? `(${props.finalFourRight.teams[1].seed})` : ''}{' '}{teamDidAdvance(props.finalFourRight.teams[1]) ? props.finalFourRight.teams[1].nameShort : 'TBD'}{' '}{props.finalFourRight.teams[1].dbSpread ? `(${props.finalFourRight.teams[1].dbSpread})` : ''}{' '}</span>
                             </div>
                             {teamDidAdvance(props.finalFourRight.teams[1]) ? <img className="team-logo" src={props.finalFourRight.teams[1].logoURL} /> : ''}

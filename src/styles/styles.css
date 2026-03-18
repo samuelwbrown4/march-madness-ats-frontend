@@ -722,13 +722,13 @@ th {
   }
 
   .one.left {
-    padding-left: 4rem;
+    padding-left: 2.5rem;
     padding-right: 2rem;
   }
 
   .one.right {
     padding-left: 2rem;
-    padding-right: 4rem;
+    padding-right: 2.5rem;
   }
 
   .two.left {
@@ -774,6 +774,7 @@ th {
 
 @media (max-width: 390px) {
   .mobile-too-long {
+    font-size: 0.8rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -824,7 +825,7 @@ th {
   justify-content: space-between;
   gap: 170px;
   margin-top: 95px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .round-two-region-bottom {
@@ -847,16 +848,16 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 525px;
-  margin-top: 272px;
-  margin-bottom: 610px;
+  gap: 545px;
+  margin-top: 280px;
+  margin-bottom: 625px;
 }
 
 .round-three-region-bottom {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 525px;
+  gap: 545px;
   margin-bottom: 134px;
 }
 
@@ -864,20 +865,20 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 640px;
-  gap: 1330px;
+  margin-top: 675px;
+  gap: 1375px;
 }
 
 .round-five-side {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1450px;
+  margin-top: 1470px;
 }
 
 .round-six {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1450px;
+  margin-top: 1470px;
 }

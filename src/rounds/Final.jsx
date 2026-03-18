@@ -18,7 +18,7 @@ function Final(props) {
                     <>
                         <div className='team-info'>
                             {teamDidAdvance(props.finalGame.teams[0]) ? <img className="team-logo" src={props.finalGame.teams[0].logoURL} /> : ''}
-                            <div className={props.finalGame.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalGame.teams[0]) && props.finalGame.teams[0].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalGame.teams[0].isFinal ? (props.finalGame.teams[0].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalGame.teams[0]) ? `(${props.finalGame.teams[0].seed})` : ''}{' '}{teamDidAdvance(props.finalGame.teams[0]) ? props.finalGame.teams[0].nameShort : 'TBD'}{' '}{props.finalGame.teams[0].dbSpread ? `(${props.finalGame.teams[0].dbSpread})` : ''}{' '}</span>
                             </div>
                             <div className='score-section'>
@@ -45,7 +45,7 @@ function Final(props) {
                                     <b>{props.finalGame.teams[1].isFinal && props.finalGame.teams[1].score}</b>
                                 ) : null}
                             </div>
-                            <div className={props.finalGame.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
+                            <div className={teamDidAdvance(props.finalGame.teams[1]) && props.finalGame.teams[1].nameShort.length >= 10 ? 'team-name-section small-name' : 'team-name-section'}>
                                 <span className={props.finalGame.teams[1].isFinal ? (props.finalGame.teams[1].isWinner === true ? "team-won" : "team-eliminated") : ""}>{teamDidAdvance(props.finalGame.teams[1]) ? `(${props.finalGame.teams[1].seed})` : ''}{' '}{teamDidAdvance(props.finalGame.teams[1]) ? props.finalGame.teams[1].nameShort : 'TBD'}{' '}{props.finalGame.teams[1].dbSpread ? `(${props.finalGame.teams[1].dbSpread})` : ''}{' '}</span>
                             </div>
                             {teamDidAdvance(props.finalGame.teams[1]) ? <img className="team-logo" src={props.finalGame.teams[1].logoURL} /> : ''}
