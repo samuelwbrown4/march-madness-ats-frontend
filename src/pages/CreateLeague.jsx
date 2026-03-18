@@ -43,10 +43,15 @@ function CreateLeague() {
 
         const availableYear = allMetadata?.find((m) => m.year === Number(initialYear))
 
-        if (availableYear) {
+        if (!availableYear) {
+            window.alert(`Metadata for year ${initialYear} hasn't been set up yet. Please contact admin.`);
+            return;
+        }
+
+        
             let endOfFirstFourString = availableYear.rounds[0].endDate
             let [year, month, day] = endOfFirstFourString.split('-').map(Number);
-            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999); 
+            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999);
             let today = new Date()
 
             console.log('availableYear:', availableYear);
@@ -75,7 +80,7 @@ function CreateLeague() {
                 }
                 return;
             }
-        }
+    
 
         let response = await fetch(`${API_URL}/api/leagues/initialize-tournament`, {
             method: 'POST',
@@ -157,9 +162,12 @@ function CreateLeague() {
                             <h6 style={{ textAlign: 'center' }}> Select Year To Initialize Tournament For </h6>
                             <select className="form-select" id="year-select" onChange={(e) => setInitialYear(e.target.value)}>
                                 <option value={''}>Select Year</option>
-                                <option value={2024}>2024</option>
-                                <option value={2025}>2025</option>
-                                <option value={2026}>2026</option>
+                                {allMetadata.map((m)=>{
+                                    return(
+                                        <option key={m.year} value={m.year}>{m.year}</option>
+                                    )
+                                })}
+                               
                             </select>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
