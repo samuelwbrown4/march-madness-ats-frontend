@@ -244,7 +244,7 @@ function AdminDashboard({ token }) {
                     },
                     body: JSON.stringify({ leagueName: league.name, numberOfOwners: league.numberOfOwners, owners: league.players, year: league.year, runDate: Date.now() })
                 })
-                let data = response.json()
+                let data = await response.json()
                 if (data.error) {
                     alert(`Error: ${data.error}`)
                 } else if (data.success) {
