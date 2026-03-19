@@ -11,7 +11,9 @@ function Final(props) {
         );
     }
 
-    const champion = props.finalGame.teams.find((t) => t.isFinal && t.isWinner === true)
+    const champion = props.finalGame && props.finalGame.teams 
+    ? props.finalGame.teams.find((t) => t.isFinal && t.isWinner === true)
+    : null;
 
     return (
         <div className='round-six'>
