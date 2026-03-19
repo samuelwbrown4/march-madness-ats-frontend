@@ -490,6 +490,7 @@ th {
   margin: 1rem 0;
   background-color: #232b38;
   width: 280px;
+  height: 170px;
   color: #b8c1ec;
   box-shadow: 0 2px 8px rgba(100, 108, 255, 0.08);
   transition: box-shadow 0.2s, transform 0.2s;
@@ -537,6 +538,9 @@ th {
   border-radius: 6px;
   border: 1px solid #21c97a;
 }
+
+
+
 
 .team-info {
   display: flex;
