@@ -224,7 +224,7 @@ function AdminDashboard({ token }) {
         if (availableYear) {
             let endOfFirstFourString = availableYear.rounds[0].endDate
             let [year, month, day] = endOfFirstFourString.split('-').map(Number);
-            let endOfFirstFour = new Date(year, month - 1, day, 23, 59, 59, 999);
+            let endOfFirstFour = new Date(year, month - 1, day, 23, 30, 59, 999);
             let today = new Date()
 
             if (today < endOfFirstFour) {
