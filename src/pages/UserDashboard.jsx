@@ -18,13 +18,6 @@ function UserDashboard() {
     }
 
     useEffect(() => {
-        {/*async function fetchLeagueName() {
-            let res = await fetch(`${API_URL}/api/leagues/name?leagueId=${leagueId}`)
-
-            let data = await res.json()
-            setLeagueName(data.name)
-            setLeaguePlayers(data.players)
-        }     */}
 
         async function getUnplayedGames() {
             try {
@@ -35,13 +28,9 @@ function UserDashboard() {
                 setLeagueName(data.name);
                 setStandings(data.standings);
 
-
-
-
             } catch (error) {
                 alert('unexpected error fetching league standings')
             }
-
         }
 
         getUnplayedGames();
@@ -122,11 +111,12 @@ function UserDashboard() {
                                 <tr>
                                     <td colSpan={2}>
                                         <Collapse in={true}>
-                                            <ul>
+                                            <div style={{display: 'flex' , flexDirection: 'column' , gap: '0.5rem' , margin: '0 auto'}}>
                                                 {player.teams.map((team) => (
-                                                    <li key={team}>{team}</li>
+                                                    <div className="user-dash-collapse" key={team.team}><img className="dashboard-logo" src={team.logo} alt='team-logo' />{team.team}</div>
+                                                    
                                                 ))}
-                                            </ul>
+                                            </div>
                                         </Collapse>
                                     </td>
                                 </tr>
