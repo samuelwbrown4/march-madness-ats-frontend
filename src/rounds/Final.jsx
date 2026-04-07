@@ -15,7 +15,7 @@ function Final(props) {
     ? props.finalGame.teams.find((t) => t.isFinal && t.isWinner === true)
     : null;
 
-    const coverer = props.finalGame && props.finalGame.teams ? props.finalGame.teams.find((t) => t.isFinal && t.didCover)
+    const coverer = props.finalGame && props.finalGame.teams ? props.finalGame.teams.find((t) => t.isFinal && t.didCover === true)
     : null;
 
     return (
@@ -26,7 +26,7 @@ function Final(props) {
                         <img className='champion-logo' src={champion.logoURL} alt='champion-logo' />
                         <span className='champion-text'>{champion.nameShort}</span>
                         <br />
-                        <span className='owner-champion'>{coverer.owner}</span>
+                        <span className='owner-champion'>{coverer?.owner}</span>
                     </>
                 ) : (
                     <>
