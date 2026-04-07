@@ -18,6 +18,14 @@ function Final(props) {
     const coverer = props.finalGame && props.finalGame.teams ? props.finalGame.teams.find((t) => t.isFinal && t.didCover === true)
     : null;
 
+    console.log('finalGame teams:', props.finalGame?.teams?.map(t => ({
+    name: t.nameShort,
+    isFinal: t.isFinal,
+    didCover: t.didCover,
+    owner: t.owner,
+    isWinner: t.isWinner
+})));
+
     return (
         <div className='round-six'>
             <div className='champion-card'>
